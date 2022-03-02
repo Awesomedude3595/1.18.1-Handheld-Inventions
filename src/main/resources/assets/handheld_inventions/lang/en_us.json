@@ -1,0 +1,10 @@
+{
+  "item.handheld_inventions.tnt_launcher": "TNT Launcher",
+  "item.handheld_inventions.invention_shrinker": "Invention Shrinker",
+  "entity.handheld_inventions.bug": "Size Bug",
+  "item.handheld_inventions.size_bug_essence": "Size Essence",
+  "container.handheld_inventions.chest": "Chest",
+  "block.handheld_inventions.chest": "Chest",
+  "block.handheld_inventions.essence_converter": "Essence Converter",
+  "container.handheld_inventions.essence_converter": "Essence Converter"
+}

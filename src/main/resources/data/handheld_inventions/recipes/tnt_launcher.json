@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "BEB",
+    "BCB"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:tnt"
+    },
+    "B": {
+      "item": "handheld_inventions:invention_shrinker"
+    },
+    "C": {
+      "item": "minecraft:water_bucket"
+    },
+    "E": {
+      "item": "minecraft:dispenser"
+    }
+  },
+  "result": {
+    "item": "handheld_inventions:tnt_launcher"
+  }
+}

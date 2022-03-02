@@ -1,0 +1,13 @@
+modLoader="javafml" #mandatory
+loaderVersion="[39,)" #mandatory
+license="All rights reserved"
+[[mods]] #mandatory
+modId="handheld_inventions" #mandatory
+version="${file.jarVersion}" #mandatory
+displayName="Handheld Inventions" #mandatory
+credits="Thanks for this mod goes to awesomedude3595" #optional
+authors="awesomedude3595" #optional
+description='''
+A mod which adds a bunch of inventions you would normally have to build.
+Now they are all handheld and can be used anywhere.
+'''
