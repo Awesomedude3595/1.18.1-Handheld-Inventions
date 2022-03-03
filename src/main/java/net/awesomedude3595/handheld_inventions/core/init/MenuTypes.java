@@ -5,13 +5,10 @@ import net.awesomedude3595.handheld_inventions.common.container.EssenceConverter
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryObject;
 
-public class MenuTypes<T> extends MenuType {
-    public MenuTypes(MenuSupplier p_39984_) {
-        super(p_39984_);
-    }
+public class MenuTypes<T>{
+    private MenuTypes() {}
 
     public static final DeferredRegister<MenuType<?>> MENU_TYPES = DeferredRegister.create(ForgeRegistries.CONTAINERS, HandheldInventions.MOD_ID);
 

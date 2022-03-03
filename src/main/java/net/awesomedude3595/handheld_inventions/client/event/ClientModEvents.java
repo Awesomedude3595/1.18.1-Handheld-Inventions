@@ -32,7 +32,7 @@ public class ClientModEvents {
 
     @SubscribeEvent
     public static void clientSetup(FMLClientSetupEvent event) {
-        MenuScreens.register(ContainerInit.chest.get(), ChestScreen::new);
         MenuScreens.register(ContainerInit.essence_converter.get(), EssenceConverterScreen::new);
+        MenuScreens.register(ContainerInit.chest.get(), ChestScreen::new);
     }
 }
