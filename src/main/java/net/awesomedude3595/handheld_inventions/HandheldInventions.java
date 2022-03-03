@@ -19,6 +19,5 @@ public class HandheldInventions {
         Blocks.BLOCKS.register(bus);
         BlockEntityTypes.BLOCK_ENTITIES.register(bus);
         ContainerInit.CONTAINERS.register(bus);
-        MenuTypes.MENU_TYPES.register(bus);
     }
 }
