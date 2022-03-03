@@ -7,7 +7,7 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class EssenceConverterContainer extends ItemCombinerMenu {
+public class EssenceConverterContainer extends ModItemCombinerMenu {
     public EssenceConverterContainer( int p_39774_, Inventory p_39775_) {
         super(ContainerInit.essence_converter.get(), p_39774_, p_39775_, ContainerLevelAccess.NULL);
     }
@@ -28,7 +28,7 @@ public class EssenceConverterContainer extends ItemCombinerMenu {
 
     @Override
     protected boolean isValidBlock(BlockState p_39788_) {
-        return false;
+        return true;
     }
 
     @Override
