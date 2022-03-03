@@ -31,10 +31,10 @@ public abstract class ModItemCombinerMenu extends AbstractContainerMenu{
         super(p_39773_, p_39774_);
         this.access = p_39776_;
         this.player = p_39775_.player;
-        this.addSlot(new Slot(this.inputSlots, 0, 8, 5));
-        this.addSlot(new Slot(this.inputSlots, 1, 8, 5 + 18));
-        this.addSlot(new Slot(this.inputSlots, 2, 8 + 18*2, 5));
-        this.addSlot(new Slot(this.resultSlots, 3, 8 + 18*8, 5 +18) {
+        this.addSlot(new Slot(this.inputSlots, 0, 8, 18));
+        this.addSlot(new Slot(this.inputSlots, 1, 8, 18 + 18));
+        this.addSlot(new Slot(this.inputSlots, 2, 8 + 18*2, 18));
+        this.addSlot(new Slot(this.resultSlots, 3, 8 + 18*8, 18 +18) {
             public boolean mayPlace(ItemStack p_39818_) {
                 return false;
             }
