@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import java.util.stream.Stream;
 
 import net.awesomedude3595.handheld_inventions.core.init.RecipeSerializers;
+import net.awesomedude3595.handheld_inventions.core.init.RecipeTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -64,7 +65,7 @@ public class ModUpgradeRecipe implements Recipe<Container> {
     }
 
     public RecipeType<?> getType() {
-        return RecipeType.SMITHING;
+        return RecipeTypes.essence_converter;
     }
 
     public boolean isIncomplete() {
