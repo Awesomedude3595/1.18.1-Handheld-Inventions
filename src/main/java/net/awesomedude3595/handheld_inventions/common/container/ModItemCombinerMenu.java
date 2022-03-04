@@ -93,7 +93,7 @@ public abstract class ModItemCombinerMenu extends AbstractContainerMenu{
         if (slot != null && slot.hasItem()) {
             ItemStack itemstack1 = slot.getItem();
             itemstack = itemstack1.copy();
-            if (p_39793_ == 2) {
+            if (p_39793_ == 3) {
                 if (!this.moveItemStackTo(itemstack1, 3, 39, true)) {
                     return ItemStack.EMPTY;
                 }
