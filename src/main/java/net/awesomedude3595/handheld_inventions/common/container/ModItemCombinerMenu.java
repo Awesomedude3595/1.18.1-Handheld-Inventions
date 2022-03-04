@@ -84,7 +84,7 @@ public abstract class ModItemCombinerMenu extends AbstractContainerMenu{
     }
 
     protected boolean shouldQuickMoveToAdditionalSlot(ItemStack p_39787_) {
-        return false;
+        return true;
     }
 
     public ItemStack quickMoveStack(Player p_39792_, int p_39793_) {
