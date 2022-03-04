@@ -1,6 +1,8 @@
 package net.awesomedude3595.handheld_inventions.common.container;
 
+import net.awesomedude3595.handheld_inventions.common.crafting.ModUpgradeRecipe;
 import net.awesomedude3595.handheld_inventions.core.init.ContainerInit;
+import net.awesomedude3595.handheld_inventions.core.init.RecipeTypes;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
@@ -17,8 +19,8 @@ import java.util.List;
 public class EssenceConverterContainer extends ModItemCombinerMenu {
     private final Level level;
     @Nullable
-    private UpgradeRecipe selectedRecipe;
-    private final List<UpgradeRecipe> recipes;
+    private ModUpgradeRecipe selectedRecipe;
+    private final List<ModUpgradeRecipe> recipes;
 
     public EssenceConverterContainer(int p_40245_, Inventory p_40246_) {
         this(p_40245_, p_40246_, ContainerLevelAccess.NULL);
@@ -27,7 +29,7 @@ public class EssenceConverterContainer extends ModItemCombinerMenu {
     public EssenceConverterContainer(int p_40248_, Inventory p_40249_, ContainerLevelAccess p_40250_) {
         super(ContainerInit.essence_converter.get(), p_40248_, p_40249_, p_40250_);
         this.level = p_40249_.player.level;
-        this.recipes = this.level.getRecipeManager().getAllRecipesFor(RecipeType.SMITHING);
+        this.recipes = this.level.getRecipeManager().getAllRecipesFor(RecipeTypes.essence_converter);
     }
 
     protected boolean isValidBlock(BlockState p_40266_) {
@@ -55,7 +57,7 @@ public class EssenceConverterContainer extends ModItemCombinerMenu {
     }
 
     public void createResult() {
-        List<UpgradeRecipe> list = this.level.getRecipeManager().getRecipesFor(RecipeType.SMITHING, this.inputSlots, this.level);
+        List<ModUpgradeRecipe> list = this.level.getRecipeManager().getRecipesFor(RecipeTypes.essence_converter, this.inputSlots, this.level);
         if (list.isEmpty()) {
             this.resultSlots.setItem(0, ItemStack.EMPTY);
         } else {

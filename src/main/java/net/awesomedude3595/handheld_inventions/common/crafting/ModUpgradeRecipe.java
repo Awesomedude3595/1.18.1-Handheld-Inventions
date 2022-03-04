@@ -68,6 +68,10 @@ public class ModUpgradeRecipe implements Recipe<Container> {
         return RecipeTypes.essence_converter;
     }
 
+    public boolean isAdditionIngredient(ItemStack p_44536_) {
+        return this.addition.test(p_44536_);
+    }
+
     public boolean isIncomplete() {
         return Stream.of(this.base, this.addition, this.addition2).anyMatch((p_151284_) -> {
             return p_151284_.getItems().length == 0;
