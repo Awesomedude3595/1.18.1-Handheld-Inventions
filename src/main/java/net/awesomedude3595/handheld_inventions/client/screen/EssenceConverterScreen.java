@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.awesomedude3595.handheld_inventions.HandheldInventions;
 import net.awesomedude3595.handheld_inventions.common.container.ChestContainer;
 import net.awesomedude3595.handheld_inventions.common.container.EssenceConverterContainer;
+import net.awesomedude3595.handheld_inventions.core.init.Items;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.ContainerScreen;
@@ -13,6 +14,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.gui.widget.ExtendedButton;
 
 public class EssenceConverterScreen extends AbstractContainerScreen<EssenceConverterContainer> {
@@ -45,11 +47,11 @@ public class EssenceConverterScreen extends AbstractContainerScreen<EssenceConve
     protected void init() {
         super.init();
         this.addRenderableWidget(new ExtendedButton(leftPos + 80, topPos + 53, 16, 16, new TextComponent("£"), btn ->{
-            Minecraft.getInstance().player.displayClientMessage(new TextComponent("Shrink"), false);
+            EssenceConverterContainer.result = new ItemStack(Items.shrinking_matter.get());
         }));
 
         this.addRenderableWidget(new ExtendedButton(leftPos + 98, topPos + 53, 16, 16, new TextComponent("$"), btn ->{
-            Minecraft.getInstance().player.displayClientMessage(new TextComponent("Expand"), false);
+            EssenceConverterContainer.result = new ItemStack(Items.expanding_matter.get());
         }));
     }
 }
