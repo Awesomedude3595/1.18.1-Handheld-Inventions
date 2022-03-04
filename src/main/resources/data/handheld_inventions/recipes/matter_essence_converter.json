@@ -1,5 +1,5 @@
 {
-  "type": "handheld_inventions:essence_converter",
+  "type": "minecraft:essence_converter",
   "base": {
     "item": "minecraft:diamond"
   },

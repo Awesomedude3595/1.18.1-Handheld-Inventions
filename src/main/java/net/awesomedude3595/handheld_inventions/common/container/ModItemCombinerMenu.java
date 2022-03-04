@@ -102,7 +102,7 @@ public abstract class ModItemCombinerMenu extends AbstractContainerMenu{
             } else if (p_39793_ != 0 && p_39793_ != 1) {
                 if (p_39793_ >= 3 && p_39793_ < 39) {
                     int i = this.shouldQuickMoveToAdditionalSlot(itemstack) ? 1 : 0;
-                    if (!this.moveItemStackTo(itemstack1, i, 2, false)) {
+                    if (!this.moveItemStackTo(itemstack1, i, 3, false)) {
                         return ItemStack.EMPTY;
                     }
                 }
