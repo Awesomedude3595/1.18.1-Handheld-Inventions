@@ -2,6 +2,8 @@ package net.awesomedude3595.handheld_inventions.common.container.crafting;
 
 import com.google.gson.JsonObject;
 import java.util.stream.Stream;
+
+import net.awesomedude3595.handheld_inventions.core.init.RecipeSerializers;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -15,18 +17,20 @@ import net.minecraft.world.level.block.Blocks;
 public class ModUpgradeRecipe implements Recipe<Container> {
     final Ingredient base;
     final Ingredient addition;
+    final Ingredient addition2;
     final ItemStack result;
     private final ResourceLocation id;
 
-    public ModUpgradeRecipe(ResourceLocation p_44523_, Ingredient p_44524_, Ingredient p_44525_, ItemStack p_44526_) {
+    public ModUpgradeRecipe(ResourceLocation p_44523_, Ingredient p_44524_, Ingredient p_44525_, Ingredient ingredient2, ItemStack p_44526_) {
         this.id = p_44523_;
         this.base = p_44524_;
         this.addition = p_44525_;
+        this.addition2 = ingredient2;
         this.result = p_44526_;
     }
 
     public boolean matches(Container p_44533_, Level p_44534_) {
-        return this.base.test(p_44533_.getItem(0)) && this.addition.test(p_44533_.getItem(1));
+        return this.base.test(p_44533_.getItem(0)) && this.addition.test(p_44533_.getItem(1)) && this.addition2.test(p_44533_.getItem(2));
     }
 
     public ItemStack assemble(Container p_44531_) {
@@ -47,10 +51,6 @@ public class ModUpgradeRecipe implements Recipe<Container> {
         return this.result;
     }
 
-    public boolean isAdditionIngredient(ItemStack p_44536_) {
-        return this.addition.test(p_44536_);
-    }
-
     public ItemStack getToastSymbol() {
         return new ItemStack(Blocks.SMITHING_TABLE);
     }
@@ -60,7 +60,7 @@ public class ModUpgradeRecipe implements Recipe<Container> {
     }
 
     public RecipeSerializer<?> getSerializer() {
-        return RecipeSerializer.SMITHING;
+        return RecipeSerializers.essence_converter.get();
     }
 
     public RecipeType<?> getType() {
@@ -68,7 +68,7 @@ public class ModUpgradeRecipe implements Recipe<Container> {
     }
 
     public boolean isIncomplete() {
-        return Stream.of(this.base, this.addition).anyMatch((p_151284_) -> {
+        return Stream.of(this.base, this.addition, this.addition2).anyMatch((p_151284_) -> {
             return p_151284_.getItems().length == 0;
         });
     }
@@ -77,20 +77,23 @@ public class ModUpgradeRecipe implements Recipe<Container> {
         public ModUpgradeRecipe fromJson(ResourceLocation p_44562_, JsonObject p_44563_) {
             Ingredient ingredient = Ingredient.fromJson(GsonHelper.getAsJsonObject(p_44563_, "base"));
             Ingredient ingredient1 = Ingredient.fromJson(GsonHelper.getAsJsonObject(p_44563_, "addition"));
+            Ingredient ingredient2 = Ingredient.fromJson(GsonHelper.getAsJsonObject(p_44563_, "addition2"));
             ItemStack itemstack = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(p_44563_, "result"));
-            return new ModUpgradeRecipe(p_44562_, ingredient, ingredient1, itemstack);
+            return new ModUpgradeRecipe(p_44562_, ingredient, ingredient1, ingredient2, itemstack);
         }
 
         public ModUpgradeRecipe fromNetwork(ResourceLocation p_44565_, FriendlyByteBuf p_44566_) {
             Ingredient ingredient = Ingredient.fromNetwork(p_44566_);
             Ingredient ingredient1 = Ingredient.fromNetwork(p_44566_);
+            Ingredient ingredient2 = Ingredient.fromNetwork(p_44566_);
             ItemStack itemstack = p_44566_.readItem();
-            return new ModUpgradeRecipe(p_44565_, ingredient, ingredient1, itemstack);
+            return new ModUpgradeRecipe(p_44565_, ingredient, ingredient1, ingredient2, itemstack);
         }
 
         public void toNetwork(FriendlyByteBuf p_44553_, ModUpgradeRecipe p_44554_) {
             p_44554_.base.toNetwork(p_44553_);
             p_44554_.addition.toNetwork(p_44553_);
+            p_44554_.addition2.toNetwork(p_44553_);
             p_44553_.writeItem(p_44554_.result);
         }
     }
