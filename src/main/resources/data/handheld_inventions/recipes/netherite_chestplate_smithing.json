@@ -1,10 +1,10 @@
 {
-  "type": "minecraft:smithing",
+  "type": "handheld_inventions:essence_converter",
   "base": {
     "item": "minecraft:diamond_chestplate"
   },
   "addition": {
-    "item": "minecraft:netherite_ingot"
+    "item": ""
   },
   "addition2": {
     "item": "minecraft:netherite_ingot"
