@@ -1,7 +1,7 @@
 package net.awesomedude3595.handheld_inventions.core.init;
 
 import net.awesomedude3595.handheld_inventions.HandheldInventions;
-import net.awesomedude3595.handheld_inventions.common.container.crafting.ModUpgradeRecipe;
+import net.awesomedude3595.handheld_inventions.common.crafting.ModUpgradeRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;

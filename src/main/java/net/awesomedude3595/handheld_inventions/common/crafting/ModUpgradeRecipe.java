@@ -1,4 +1,4 @@
-package net.awesomedude3595.handheld_inventions.common.container.crafting;
+package net.awesomedude3595.handheld_inventions.common.crafting;
 
 import com.google.gson.JsonObject;
 import java.util.stream.Stream;
@@ -44,7 +44,7 @@ public class ModUpgradeRecipe implements Recipe<Container> {
     }
 
     public boolean canCraftInDimensions(int p_44528_, int p_44529_) {
-        return p_44528_ * p_44529_ >= 2;
+        return p_44528_ * p_44529_ >= 3;
     }
 
     public ItemStack getResultItem() {
