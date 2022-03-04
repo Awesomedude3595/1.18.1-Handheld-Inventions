@@ -2,6 +2,7 @@ package net.awesomedude3595.handheld_inventions.common.container;
 
 import net.awesomedude3595.handheld_inventions.common.crafting.ModUpgradeRecipe;
 import net.awesomedude3595.handheld_inventions.core.init.ContainerInit;
+import net.awesomedude3595.handheld_inventions.core.init.Items;
 import net.awesomedude3595.handheld_inventions.core.init.RecipeTypes;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -17,6 +18,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class EssenceConverterContainer extends ModItemCombinerMenu {
+    public static ItemStack result = new ItemStack(Items.shrinking_matter.get());
     private final Level level;
     @Nullable
     private ModUpgradeRecipe selectedRecipe;
@@ -45,6 +47,7 @@ public class EssenceConverterContainer extends ModItemCombinerMenu {
         this.resultSlots.awardUsedRecipes(p_150663_);
         this.shrinkStackInSlot(0);
         this.shrinkStackInSlot(1);
+        this.shrinkStackInSlot(2);
         this.access.execute((p_40263_, p_40264_) -> {
             p_40263_.levelEvent(1044, p_40264_, 0);
         });
