@@ -6,6 +6,7 @@ import net.awesomedude3595.handheld_inventions.core.init.*;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.RegistryObject;
 
 @Mod("handheld_inventions")
 public class HandheldInventions {
@@ -19,5 +20,6 @@ public class HandheldInventions {
         Blocks.BLOCKS.register(bus);
         BlockEntityTypes.BLOCK_ENTITIES.register(bus);
         ContainerInit.CONTAINERS.register(bus);
+        RecipeSerializers.RECIPE_SERIALIZERS.register(bus);
     }
 }
