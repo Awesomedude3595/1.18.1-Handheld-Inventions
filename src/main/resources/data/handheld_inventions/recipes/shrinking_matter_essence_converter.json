@@ -11,8 +11,5 @@
   },
   "fakeIngredient": {
     "item": "handheld_invention:shrinking_matter"
-  },
-  "result": {
-    "item": "handheld_invention:shrinking_matter"
   }
 }

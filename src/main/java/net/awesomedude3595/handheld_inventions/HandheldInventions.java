@@ -18,7 +18,5 @@ public class HandheldInventions {
         BlockEntityTypes.BLOCK_ENTITIES.register(bus);
         ContainerInit.CONTAINERS.register(bus);
         RecipeSerializers.RECIPE_SERIALIZERS.register(bus);
-
-        new FakeSlotChange(ItemStack.EMPTY);
     }
 }

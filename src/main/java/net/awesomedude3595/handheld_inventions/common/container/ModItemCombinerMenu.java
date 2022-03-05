@@ -6,15 +6,13 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
 public abstract class ModItemCombinerMenu extends AbstractContainerMenu{
-    protected Slot fakeSlot;
     protected final ResultContainer resultSlots = new ResultContainer();
-    public final Container inputSlots = new SimpleContainer(4) {
+    public final Container inputSlots = new SimpleContainer(3) {
         public void setChanged() {
             super.setChanged();
             ModItemCombinerMenu.this.slotsChanged(this);
@@ -36,7 +34,6 @@ public abstract class ModItemCombinerMenu extends AbstractContainerMenu{
         this.addSlot(new Slot(this.inputSlots, 0, 8, 17));
         this.addSlot(new Slot(this.inputSlots, 1, 8, 17 + 18));
         this.addSlot(new Slot(this.inputSlots, 2, 8 + 18*3, 17));
-        fakeSlot = this.addSlot(new Slot(this.inputSlots, 3, 8 + 18*8, 17));
         this.addSlot(new Slot(this.resultSlots, 4, 8 + 18*8, 17 +18) {
             public boolean mayPlace(ItemStack p_39818_) {
                 return false;
@@ -75,7 +72,6 @@ public abstract class ModItemCombinerMenu extends AbstractContainerMenu{
     public void removed(Player p_39790_) {
         super.removed(p_39790_);
         this.access.execute((p_39796_, p_39797_) -> {
-            this.fakeSlot.set(ItemStack.EMPTY);
             this.clearContainer(p_39790_, this.inputSlots);
         });
     }
@@ -97,18 +93,18 @@ public abstract class ModItemCombinerMenu extends AbstractContainerMenu{
             ItemStack itemstack1 = slot.getItem();
             itemstack = itemstack1.copy();
             if (p_39793_ == 3) {
-                if (!this.moveItemStackTo(itemstack1, 5, 41, true)) {
+                if (!this.moveItemStackTo(itemstack1, 4, 40, true)) {
                     return ItemStack.EMPTY;
                 }
 
                 slot.onQuickCraft(itemstack1, itemstack);
             } else if (p_39793_ != 0 && p_39793_ != 1) {
-                if (p_39793_ >= 5 && p_39793_ < 41) {
+                if (p_39793_ >= 4 && p_39793_ < 40) {
                     if (!this.moveItemStackTo(itemstack1, 0, 3, false)) {
                         return ItemStack.EMPTY;
                     }
                 }
-            } else if (!this.moveItemStackTo(itemstack1, 5, 41, false)) {
+            } else if (!this.moveItemStackTo(itemstack1, 4, 40, false)) {
                 return ItemStack.EMPTY;
             }
 
