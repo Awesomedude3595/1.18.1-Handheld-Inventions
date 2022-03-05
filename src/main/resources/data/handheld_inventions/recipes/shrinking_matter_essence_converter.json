@@ -9,7 +9,7 @@
   "addition2": {
     "item": "handheld_inventions:size_bug_essence"
   },
-  "fakeIngredient": {
+  "result": {
     "item": "handheld_inventions:shrinking_matter"
   }
 }
