@@ -20,24 +20,26 @@ public class ModUpgradeRecipe implements Recipe<Container> {
     final Ingredient base;
     final Ingredient addition;
     final Ingredient addition2;
+    final Ingredient fakeIngredient;
     final ItemStack result;
     private final ResourceLocation id;
 
-    public ModUpgradeRecipe(ResourceLocation p_44523_, Ingredient p_44524_, Ingredient p_44525_, Ingredient ingredient2, ItemStack p_44526_) {
+    public ModUpgradeRecipe(ResourceLocation p_44523_, Ingredient p_44524_, Ingredient p_44525_, Ingredient ingredient2, Ingredient fakeIngredient, ItemStack p_44526_) {
         this.id = p_44523_;
         this.base = p_44524_;
         this.addition = p_44525_;
         this.addition2 = ingredient2;
+        this.fakeIngredient = fakeIngredient;
         this.result = p_44526_;
     }
 
     public boolean matches(Container p_44533_, Level p_44534_) {
-        return this.base.test(p_44533_.getItem(0)) && this.addition.test(p_44533_.getItem(1)) && this.addition2.test(p_44533_.getItem(2));
+        return this.base.test(p_44533_.getItem(0)) && this.addition.test(p_44533_.getItem(1)) && this.addition2.test(p_44533_.getItem(2)) && this.fakeIngredient.test(p_44533_.getItem(3));
     }
 
     public ItemStack assemble(Container p_44531_) {
         ItemStack itemstack = this.result.copy();
-        CompoundTag compoundtag = p_44531_.getItem(0).getTag();
+        CompoundTag compoundtag = p_44531_.getItem(0).getTag();w
         if (compoundtag != null) {
             itemstack.setTag(compoundtag.copy());
         }
@@ -51,10 +53,6 @@ public class ModUpgradeRecipe implements Recipe<Container> {
 
     public ItemStack getResultItem() {
         return this.result;
-    }
-
-    public ItemStack getToastSymbol() {
-        return new ItemStack(Blocks.SMITHING_TABLE);
     }
 
     public ResourceLocation getId() {
@@ -74,7 +72,7 @@ public class ModUpgradeRecipe implements Recipe<Container> {
     }
 
     public boolean isIncomplete() {
-        return Stream.of(this.base, this.addition, this.addition2).anyMatch((p_151284_) -> {
+        return Stream.of(this.base, this.addition, this.addition2, this.fakeIngredient).anyMatch((p_151284_) -> {
             return p_151284_.getItems().length == 0;
         });
     }
@@ -84,22 +82,25 @@ public class ModUpgradeRecipe implements Recipe<Container> {
             Ingredient ingredient = Ingredient.fromJson(GsonHelper.getAsJsonObject(p_44563_, "base"));
             Ingredient ingredient1 = Ingredient.fromJson(GsonHelper.getAsJsonObject(p_44563_, "addition"));
             Ingredient ingredient2 = Ingredient.fromJson(GsonHelper.getAsJsonObject(p_44563_, "addition2"));
-            ItemStack itemstack = EssenceConverterContainer.result;
-            return new ModUpgradeRecipe(p_44562_, ingredient, ingredient1, ingredient2, itemstack);
+            Ingredient fakeIngredient = Ingredient.fromJson(GsonHelper.getAsJsonObject(p_44563_, "fakeIngredient"));
+            ItemStack itemstack = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(p_44563_, "result"));
+            return new ModUpgradeRecipe(p_44562_, ingredient, ingredient1, ingredient2, fakeIngredient, itemstack);
         }
 
         public ModUpgradeRecipe fromNetwork(ResourceLocation p_44565_, FriendlyByteBuf p_44566_) {
             Ingredient ingredient = Ingredient.fromNetwork(p_44566_);
             Ingredient ingredient1 = Ingredient.fromNetwork(p_44566_);
             Ingredient ingredient2 = Ingredient.fromNetwork(p_44566_);
+            Ingredient fakeIngredient = Ingredient.fromNetwork(p_44566_);
             ItemStack itemstack = p_44566_.readItem();
-            return new ModUpgradeRecipe(p_44565_, ingredient, ingredient1, ingredient2, itemstack);
+            return new ModUpgradeRecipe(p_44565_, ingredient, ingredient1, ingredient2, fakeIngredient, itemstack);
         }
 
         public void toNetwork(FriendlyByteBuf p_44553_, ModUpgradeRecipe p_44554_) {
             p_44554_.base.toNetwork(p_44553_);
             p_44554_.addition.toNetwork(p_44553_);
             p_44554_.addition2.toNetwork(p_44553_);
+            p_44554_.fakeIngredient.toNetwork(p_44553_);
             p_44553_.writeItem(p_44554_.result);
         }
     }

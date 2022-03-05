@@ -12,6 +12,12 @@ import javax.annotation.Nullable;
 
 public abstract class ModItemCombinerMenu extends AbstractContainerMenu{
     protected final ResultContainer resultSlots = new ResultContainer();
+    protected final Container fakeSlot = new SimpleContainer(1) {
+        public void setChanged() {
+            super.setChanged();
+            ModItemCombinerMenu.this.slotsChanged(this);
+        }
+    };
     protected final Container inputSlots = new SimpleContainer(3) {
         public void setChanged() {
             super.setChanged();
@@ -34,7 +40,8 @@ public abstract class ModItemCombinerMenu extends AbstractContainerMenu{
         this.addSlot(new Slot(this.inputSlots, 0, 8, 17));
         this.addSlot(new Slot(this.inputSlots, 1, 8, 17 + 18));
         this.addSlot(new Slot(this.inputSlots, 2, 8 + 18*3, 17));
-        this.addSlot(new Slot(this.resultSlots, 3, 8 + 18*8, 17 +18) {
+        this.addSlot(new Slot(this.fakeSlot, 3, 8 + 18*8, 17));
+        this.addSlot(new Slot(this.resultSlots, 4, 8 + 18*8, 17 +18) {
             public boolean mayPlace(ItemStack p_39818_) {
                 return false;
             }

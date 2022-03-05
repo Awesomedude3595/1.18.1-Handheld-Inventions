@@ -8,5 +8,11 @@
   },
   "addition2": {
     "item": "handheld_inventions:size_bug_essence"
+  },
+  "fakeIngredient": {
+    "item": "handheld_invention:expanding_matter"
+  },
+  "result": {
+    "item": "handheld_invention:expanding_matter"
   }
 }
