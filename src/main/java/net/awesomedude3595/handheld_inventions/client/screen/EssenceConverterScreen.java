@@ -3,12 +3,9 @@ package net.awesomedude3595.handheld_inventions.client.screen;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.awesomedude3595.handheld_inventions.HandheldInventions;
-import net.awesomedude3595.handheld_inventions.common.container.ChestContainer;
 import net.awesomedude3595.handheld_inventions.common.container.EssenceConverterContainer;
 import net.awesomedude3595.handheld_inventions.core.init.Items;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.gui.screens.inventory.ContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
@@ -47,11 +44,11 @@ public class EssenceConverterScreen extends AbstractContainerScreen<EssenceConve
     protected void init() {
         super.init();
         this.addRenderableWidget(new ExtendedButton(leftPos + 80, topPos + 53, 16, 16, new TextComponent("£"), btn ->{
-            EssenceConverterContainer.result = new ItemStack(Items.shrinking_matter.get());
+
         }));
 
         this.addRenderableWidget(new ExtendedButton(leftPos + 98, topPos + 53, 16, 16, new TextComponent("$"), btn ->{
-            EssenceConverterContainer.result = new ItemStack(Items.expanding_matter.get());
+
         }));
     }
 }

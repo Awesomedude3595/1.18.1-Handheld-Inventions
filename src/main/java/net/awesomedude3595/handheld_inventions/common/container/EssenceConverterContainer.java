@@ -18,7 +18,6 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class EssenceConverterContainer extends ModItemCombinerMenu {
-    public static ItemStack result = new ItemStack(Items.shrinking_matter.get());
     private final Level level;
     @Nullable
     private ModUpgradeRecipe selectedRecipe;

@@ -1,12 +1,9 @@
 package net.awesomedude3595.handheld_inventions;
 
-import net.awesomedude3595.handheld_inventions.client.event.ClientModEvents;
-import net.awesomedude3595.handheld_inventions.client.screen.EssenceConverterScreen;
 import net.awesomedude3595.handheld_inventions.core.init.*;
-import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.RegistryObject;
 
 @Mod("handheld_inventions")
 public class HandheldInventions {
@@ -21,5 +18,7 @@ public class HandheldInventions {
         BlockEntityTypes.BLOCK_ENTITIES.register(bus);
         ContainerInit.CONTAINERS.register(bus);
         RecipeSerializers.RECIPE_SERIALIZERS.register(bus);
+
+        new FakeSlotChange(ItemStack.EMPTY);
     }
 }
