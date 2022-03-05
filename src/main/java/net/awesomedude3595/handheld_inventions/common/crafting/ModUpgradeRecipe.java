@@ -39,7 +39,7 @@ public class ModUpgradeRecipe implements Recipe<Container> {
 
     public ItemStack assemble(Container p_44531_) {
         ItemStack itemstack = this.result.copy();
-        CompoundTag compoundtag = p_44531_.getItem(0).getTag();w
+        CompoundTag compoundtag = p_44531_.getItem(0).getTag();
         if (compoundtag != null) {
             itemstack.setTag(compoundtag.copy());
         }
