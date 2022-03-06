@@ -81,13 +81,7 @@ public class ModUpgradeRecipe implements Recipe<Container> {
             Ingredient ingredient = Ingredient.fromJson(GsonHelper.getAsJsonObject(p_44563_, "base"));
             Ingredient ingredient1 = Ingredient.fromJson(GsonHelper.getAsJsonObject(p_44563_, "addition"));
             Ingredient ingredient2 = Ingredient.fromJson(GsonHelper.getAsJsonObject(p_44563_, "addition2"));
-            ItemStack itemstack;
-            if (EssenceConverterContainer.result == true) {
-                itemstack = new ItemStack(Items.expanding_matter.get());
-            }
-            else {
-                itemstack = new ItemStack(Items.shrinking_matter.get());
-            }
+            ItemStack itemstack = ItemStack.EMPTY;
             return new ModUpgradeRecipe(p_44562_, ingredient, ingredient1, ingredient2, itemstack);
         }
 

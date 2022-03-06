@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class EssenceConverterContainer extends ModItemCombinerMenu {
-    public static boolean result = false;
+    public static boolean result;
     private final Level level;
     @Nullable
     private ModUpgradeRecipe selectedRecipe;
@@ -65,7 +65,13 @@ public class EssenceConverterContainer extends ModItemCombinerMenu {
             this.resultSlots.setItem(0, ItemStack.EMPTY);
         } else {
             this.selectedRecipe = list.get(0);
-            ItemStack itemstack = this.selectedRecipe.assemble(this.inputSlots);
+            ItemStack itemstack;
+            if (!result) {
+                itemstack = new ItemStack(Items.shrinking_matter.get());
+            }
+            else {
+                itemstack = new ItemStack(Items.expanding_matter.get());
+            }
             this.resultSlots.setRecipeUsed(this.selectedRecipe);
             this.resultSlots.setItem(0, itemstack);
         }
