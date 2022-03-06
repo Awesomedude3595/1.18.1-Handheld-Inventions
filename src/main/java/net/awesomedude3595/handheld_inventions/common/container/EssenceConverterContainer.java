@@ -66,7 +66,7 @@ public class EssenceConverterContainer extends ModItemCombinerMenu {
         } else {
             this.selectedRecipe = list.get(0);
             ItemStack itemstack;
-            if (!result) {
+            if (result) {
                 itemstack = new ItemStack(Items.shrinking_matter.get());
             }
             else {
