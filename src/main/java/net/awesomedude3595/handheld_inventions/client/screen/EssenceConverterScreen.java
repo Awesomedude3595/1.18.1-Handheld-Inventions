@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.awesomedude3595.handheld_inventions.HandheldInventions;
 import net.awesomedude3595.handheld_inventions.common.container.EssenceConverterContainer;
 import net.awesomedude3595.handheld_inventions.core.init.Items;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
@@ -16,9 +17,11 @@ import net.minecraftforge.client.gui.widget.ExtendedButton;
 
 public class EssenceConverterScreen extends AbstractContainerScreen<EssenceConverterContainer> {
     private static final ResourceLocation TEXTURE = new ResourceLocation(HandheldInventions.MOD_ID, "textures/gui/essence_converter.png");
+    EssenceConverterContainer container;
 
     public EssenceConverterScreen(EssenceConverterContainer container, Inventory playerInv, Component title) {
         super(container, playerInv, title);
+        this.container = container;
         this.leftPos = 0;
         this.topPos = 0;
         this.imageWidth = 175;
@@ -44,11 +47,11 @@ public class EssenceConverterScreen extends AbstractContainerScreen<EssenceConve
     protected void init() {
         super.init();
         this.addRenderableWidget(new ExtendedButton(leftPos + 80, topPos + 53, 16, 16, new TextComponent("£"), btn ->{
-            EssenceConverterContainer.result = false;
+            container.result = false;
         }));
 
         this.addRenderableWidget(new ExtendedButton(leftPos + 98, topPos + 53, 16, 16, new TextComponent("$"), btn ->{
-            EssenceConverterContainer.result = true;
+            container.result = true;
         }));
     }
 }
