@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class EssenceConverterContainer extends ModItemCombinerMenu {
+    public static boolean result = false;
     private final Level level;
     @Nullable
     private ModUpgradeRecipe selectedRecipe;

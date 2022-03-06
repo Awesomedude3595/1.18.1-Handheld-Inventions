@@ -44,11 +44,11 @@ public class EssenceConverterScreen extends AbstractContainerScreen<EssenceConve
     protected void init() {
         super.init();
         this.addRenderableWidget(new ExtendedButton(leftPos + 80, topPos + 53, 16, 16, new TextComponent("£"), btn ->{
-
+            EssenceConverterContainer.result = false;
         }));
 
         this.addRenderableWidget(new ExtendedButton(leftPos + 98, topPos + 53, 16, 16, new TextComponent("$"), btn ->{
-
+            EssenceConverterContainer.result = true;
         }));
     }
 }

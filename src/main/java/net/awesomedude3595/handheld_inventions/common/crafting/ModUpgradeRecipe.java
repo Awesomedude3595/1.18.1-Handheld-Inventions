@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import java.util.stream.Stream;
 
 import net.awesomedude3595.handheld_inventions.common.container.EssenceConverterContainer;
+import net.awesomedude3595.handheld_inventions.core.init.Items;
 import net.awesomedude3595.handheld_inventions.core.init.RecipeSerializers;
 import net.awesomedude3595.handheld_inventions.core.init.RecipeTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -80,7 +81,13 @@ public class ModUpgradeRecipe implements Recipe<Container> {
             Ingredient ingredient = Ingredient.fromJson(GsonHelper.getAsJsonObject(p_44563_, "base"));
             Ingredient ingredient1 = Ingredient.fromJson(GsonHelper.getAsJsonObject(p_44563_, "addition"));
             Ingredient ingredient2 = Ingredient.fromJson(GsonHelper.getAsJsonObject(p_44563_, "addition2"));
-            ItemStack itemstack = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(p_44563_, "result"));
+            ItemStack itemstack;
+            if (EssenceConverterContainer.result == true) {
+                itemstack = new ItemStack(Items.expanding_matter.get());
+            }
+            else {
+                itemstack = new ItemStack(Items.shrinking_matter.get());
+            }
             return new ModUpgradeRecipe(p_44562_, ingredient, ingredient1, ingredient2, itemstack);
         }
 
